@@ -1,5 +1,5 @@
 # [SIGIR'23] DASH: Dual Self-Supervised Learning for Hyperedge Prediction
-This repository provides an implementation of *DASH* as described in the paper: 
+This repository provides an implementation of *DASH* (submitted to SIGIR'23). 
 
 ## The overview of KHAN
 ![The overview of KHAN](./overview.png)
