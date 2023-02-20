@@ -2,7 +2,7 @@
 This repository provides an implementation of *DASH* (submitted to SIGIR'23). 
 
 ## The overview of DASH
-![The overview of DASH](./overview.png)
+![The overview of DASH](./dash_overview.png)
 
 - **Datasets**
     - We present two important research questions: (**Q1**) how to fully exploit group information for hyperedge prediction? and (**Q2**) how to aggregate the nodes of a hyperedge candidate?
@@ -13,7 +13,7 @@ This repository provides an implementation of *DASH* (submitted to SIGIR'23).
 
 
 ## Datasets
-All datasets used in the paper are available at [Here](https://drive.google.com/drive/folders/1w1zpGfQ1Sgl3A0fIlP4ekrDvSZ9Af1YT?usp=share_link).
+All datasets used in the paper are available at [Link](https://drive.google.com/drive/folders/1w1zpGfQ1Sgl3A0fIlP4ekrDvSZ9Af1YT?usp=share_link).
 
 |Name|#Nodes|#Edges|Domain|
 |:---:|:---:|:---:|:---:|

@@ -45,7 +45,6 @@ def parse_args():
 
 def print_summary(args):
     # Summary of training information
-
     print('========================================== Training Summary ==========================================')
     print ('    - GPU INDEX = %s' % (args.gpu_index))
     print ('    - DATASET = %s' % (args.dataset))
@@ -106,9 +105,6 @@ def gen_DGLGraph_with_droprate(ground, drop_rate, method='hyperedge'):
     num_nodes_dict = {'node': len(set(total_hv)), 'hedge': len(set(total_he))} # the number of nodes and hyperedges in the original hypergraph
 
     return dgl.heterograph(data_dict, num_nodes_dict)
-
-
-
 
 
 

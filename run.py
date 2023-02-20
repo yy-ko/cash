@@ -312,6 +312,8 @@ def test(args, data_info, node_aggr_info, device):
     print(f'{std_sns_roc:.4f}\t{std_mns_roc:.4f}\t{std_cns_roc:.4f}\t{std_mixed_roc:.4f}\t{std_average_roc:.4f}\t{std_sns_ap:.4f}\t{std_mns_ap:.4f}\t{std_cns_ap:.4f}\t{std_mixed_ap:.4f}\t{std_average_ap:.4f}')
 
 
+
+
 if __name__ == '__main__':
     args = utils.parse_args()
     utils.print_summary(args)

@@ -137,7 +137,6 @@ def get_dataloaders(data_dict, batch_size, device, ns_method, label='Train'):
 
 
 
-
 class BatchDataloader(object):
     def __init__(self, hyperedges, labels, batch_size, device, is_Train=False):
         """Creates an instance of Hyperedge Batch Dataloader.

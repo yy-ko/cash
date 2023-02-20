@@ -147,6 +147,7 @@ class OurModel(nn.Module): # self-supervised learning for hyperedge prediction
             sys.exit('Wrong Mode Name')
 
 
+# used in NHP, AHP (SIGIR'22)
 # MaxMin aggregator for node embeddings
 class MaxminAggregator(nn.Module):
     def __init__(self, layers):
@@ -165,7 +166,6 @@ class MaxminAggregator(nn.Module):
         min_val, _ = torch.min(embeddings, dim=0)
 
         aggregated_embedding = max_val - min_val
-        #  aggregated_embedding = torch.mean(embeddings, dim=0)
 
         pred = F.sigmoid(self.classifier(aggregated_embedding))
 
