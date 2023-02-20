@@ -1,8 +1,8 @@
 # [SIGIR'23] DASH: Dual Self-Supervised Learning for Hyperedge Prediction
 This repository provides an implementation of *DASH* (submitted to SIGIR'23). 
 
-## The overview of KHAN
-![The overview of KHAN](./overview.png)
+## The overview of DASH
+![The overview of DASH](./overview.png)
 
 - **Datasets**
     - We present two important research questions: (**Q1**) how to fully exploit group information for hyperedge prediction? and (**Q2**) how to aggregate the nodes of a hyperedge candidate?
