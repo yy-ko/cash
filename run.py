@@ -125,7 +125,6 @@ def train(args, data_info, node_aggr_info, device):
                 d_real_loss = (bce_loss(pos_preds1, pos_labels) + bce_loss(pos_preds2, pos_labels)) / 2
                 d_fake_loss = (bce_loss(neg_preds1, neg_labels) + bce_loss(neg_preds2, neg_labels)) / 2
                 contrastive_loss = -(torch.log(model.cosine_similarity(np1, np2)) + torch.log(model.cosine_similarity(hep1, hep2)))
-                #  contrastive_loss = (1 - model.cosine_similarity(np1, np2)) + (1 - model.cosine_similarity(hep1, hep2))
 
                 if args.use_contrastive == 1:
                     train_loss = d_real_loss + d_fake_loss + contrastive_loss

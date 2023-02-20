@@ -35,7 +35,6 @@ def get_datainfo(args, device):
 
 
     # HNHN terms
-    #  if args.model == 'HNHN':
     node_norm = torch.Tensor([(1/w if w > 0 else 1) for w in data_info['node_degree']]).unsqueeze(-1).to(device)
     edge_norm = torch.Tensor([(1/w if w > 0 else 1) for w in data_info['hyperedge_size']]).unsqueeze(-1).to(device)
 
@@ -72,11 +71,6 @@ def get_datainfo(args, device):
     data_info['edge_normalized_sum'] = torch.Tensor(edge_normalized_sum).unsqueeze(-1).to(device)
 
     return data_info
-
-    #  else:
-        #  return data_info
-
-
 
 
 
@@ -202,7 +196,6 @@ class BatchDataloader(object):
 
         hyperedges = [torch.LongTensor(edge).to(self.device) for edge in next_hyperedges]
         labels = torch.FloatTensor(next_labels).to(self.device)
-        #  labels = next_labels
 
         return hyperedges, labels
 
