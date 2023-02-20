@@ -2,7 +2,7 @@
 This repository provides an implementation of *DASH* as described in the paper: 
 
 ## The overview of KHAN
-![The overview of KHAN](./dash_overview.png)
+![The overview of KHAN](./overview.png)
 
 - **Datasets**
     - We present two important research questions: (**Q1**) how to fully exploit group information for hyperedge prediction? and (**Q2**) how to aggregate the nodes of a hyperedge candidate?
