@@ -2,7 +2,7 @@
 This repository provides an implementation of *DASH* as described in the paper: 
 
 ## The overview of KHAN
-![The overview of KHAN](./overview.png)
+![The overview of KHAN](./overview.pdf)
 
 - **Datasets**
     - We present two important research questions: (**Q1**) how to fully exploit group information for hyperedge prediction? and (**Q2**) how to aggregate the nodes of a hyperedge candidate?
@@ -19,8 +19,8 @@ All datasets used in the paper are available at [Here](https://drive.google.com/
 |:---:|:---:|:---:|:---:|
 |Citeseer|1,457|1,078|Co-citation|
 |Cora|1,434|1,579|Co-citation|
-|Cora-A|2,388|1,072|Authorship|
 |Pubmed|3,840|7,962|Co-citation|
+|Cora-A|2,388|1,072|Authorship|
 
 
 ### Dataset format
