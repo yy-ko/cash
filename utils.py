@@ -29,7 +29,7 @@ def parse_args():
 
     parser.add_argument("--learning_rate", type=float, default=5e-04, help="Learning rate.")
     parser.add_argument('--weight_decay', type=float, default=5e-04, help='Dropout probability.')
-    parser.add_argument('--dropout', type=float, default=0.3, help='Dropout probability.')
+    parser.add_argument('--dropout', type=float, default=0.4, help='Dropout probability.')
     parser.add_argument('--alpha', type=float, default=1, help='Hyperedge Normalization Factor of HNHN.')
     parser.add_argument('--beta', type=float, default=1, help='Node Normalization Factor of HNHN.')
     parser.add_argument("--num_epochs", type=int, default=200, help="Number of training epochs.")
