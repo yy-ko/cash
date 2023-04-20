@@ -26,6 +26,7 @@ def parse_args():
     parser.add_argument('--augment_method', type=str, default='hyperedge', help='Hypergraph augmentation method: graph or hyperedge')
     parser.add_argument('--aggre_method', type=str, default='attention', help='Node aggregation method: attention or maxmin')
     parser.add_argument('--use_contrastive', type=int, default=1, help='Use Contrastive Loss: 1 (use) or 0 (no use)')
+    parser.add_argument('--contrast_ratio', type=float, default=0.1, help='Contrastive loss control factor')
 
     parser.add_argument("--learning_rate", type=float, default=5e-04, help="Learning rate.")
     parser.add_argument('--weight_decay', type=float, default=5e-04, help='Dropout probability.')
@@ -54,6 +55,7 @@ def print_summary(args):
     print ('    - USE CONTRASTIVE = %s' % (args.use_contrastive))
     print ('    - NS METHOD = %s' % (args.ns_method))
     print (' ')
+    print ('    - CONTRAST LOSS RATIO = %s' % (args.contrast_ratio))
     print ('    - HIDDEN DIM = %s' % (args.h_dim))
     print ('    - PROJECTION DIM = %s' % (args.proj_dim))
     print ('    - NODE FEATURE DROP RATE = %s' % (args.drop_feature_rate))
