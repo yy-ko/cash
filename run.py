@@ -95,18 +95,22 @@ def train(args, data_info, node_aggr_info, device):
         patience_epoch = 0
         for epoch in range(args.num_epochs):
 
-            # generating two augmented views for contrastive learning
-            g1 = utils.gen_DGLGraph_with_droprate(ground, args.drop_incidence_rate, method=args.augment_method).to(device)
-            g2 = utils.gen_DGLGraph_with_droprate(ground, args.drop_incidence_rate, method=args.augment_method).to(device)
-            n_mask1 = utils.gen_feature_mask(args.drop_feature_rate)
-            n_mask2 = utils.gen_feature_mask(args.drop_feature_rate)
-
             model.train()
             total_loss = 0.0
             train_pred, train_label = [], []
 
             for _ in range(train_iters):
+                # generating two augmented views for contrastive learning
+                g1 = utils.gen_DGLGraph_with_droprate(ground, args.drop_incidence_rate, method=args.augment_method).to(device)
+                g2 = utils.gen_DGLGraph_with_droprate(ground, args.drop_incidence_rate, method=args.augment_method).to(device)
+                n_mask1 = utils.gen_feature_mask(args.drop_feature_rate)
+                n_mask2 = utils.gen_feature_mask(args.drop_feature_rate)
+
+                n_mask0 = utils.gen_feature_mask(0.0)
+
                 # 1. Hypergraph Encoder 
+                n, he = model(g, n_mask0, n_feat, he_feat)
+
                 n1, he1 = model(g1, n_mask1, n_feat, he_feat)
                 n2, he2 = model(g2, n_mask2, n_feat, he_feat)
 
@@ -118,12 +122,16 @@ def train(args, data_info, node_aggr_info, device):
                 pos_hedges, pos_labels = train_pos_loader.next()
                 neg_hedges, neg_labels = train_neg_loader.next()
 
-                pos_preds1, pos_preds2 = model.aggregate(n1, pos_hedges, mode='Train', method=args.aggre_method), model.aggregate(n2, pos_hedges, mode='Train', method=args.aggre_method)
-                neg_preds1, neg_preds2 = model.aggregate(n1, neg_hedges, mode='Train', method=args.aggre_method), model.aggregate(n2, neg_hedges, mode='Train', method=args.aggre_method)
+                pos_preds = model.aggregate(n, pos_hedges, mode='Train', method=args.aggre_method)
+                neg_preds = model.aggregate(n, neg_hedges, mode='Train', method=args.aggre_method)
+                #  neg_preds1, neg_preds2 = model.aggregate(n1, neg_hedges, mode='Train', method=args.aggre_method), model.aggregate(n2, neg_hedges, mode='Train', method=args.aggre_method)
 
                 # 3. compute training loss and update parameters
-                d_real_loss = (bce_loss(pos_preds1, pos_labels) + bce_loss(pos_preds2, pos_labels)) / 2
-                d_fake_loss = (bce_loss(neg_preds1, neg_labels) + bce_loss(neg_preds2, neg_labels)) / 2
+                d_real_loss = bce_loss(pos_preds, pos_labels) 
+                d_fake_loss = bce_loss(neg_preds, neg_labels) 
+                #  d_real_loss = (bce_loss(pos_preds1, pos_labels) + bce_loss(pos_preds2, pos_labels)) / 2
+                #  d_fake_loss = (bce_loss(neg_preds1, neg_labels) + bce_loss(neg_preds2, neg_labels)) / 2
+
                 pred_loss = d_real_loss + d_fake_loss
                 contrast_loss = -(torch.log(model.cosine_similarity(np1, np2)) + torch.log(model.cosine_similarity(hep1, hep2)))
 

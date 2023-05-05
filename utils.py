@@ -17,16 +17,16 @@ def parse_args():
     parser.add_argument('--data_path', type=str, default='./data', help='Data path.')
     parser.add_argument("--num_split", type=int, default=5, help="Number of split datasets.")
 
-    parser.add_argument("--h_dim", type=int, default=256, help="Hidden Embedding dimensionality.")
-    parser.add_argument("--proj_dim", type=int, default=256, help="Projection dimensionality.")
+    parser.add_argument("--h_dim", type=int, default=512, help="Hidden Embedding dimensionality.")
+    parser.add_argument("--proj_dim", type=int, default=512, help="Projection dimensionality.")
     parser.add_argument("--drop_incidence_rate", type=float, default=0.4, help="Incidence matrix dropping rate for augmentation.")
-    parser.add_argument("--drop_feature_rate", type=float, default=0.4, help="Node feauture dropping rate for augmentation.")
+    parser.add_argument("--drop_feature_rate", type=float, default=0.2, help="Node feauture dropping rate for augmentation.")
     parser.add_argument("--num_heads", type=int, default=2, help="Number of heads of self-attention layer.")
     parser.add_argument("--num_layers", default=1, type=int, help='Number of self-attention layers')
     parser.add_argument('--augment_method', type=str, default='hyperedge', help='Hypergraph augmentation method: graph or hyperedge')
     parser.add_argument('--aggre_method', type=str, default='attention', help='Node aggregation method: attention or maxmin')
     parser.add_argument('--use_contrastive', type=int, default=1, help='Use Contrastive Loss: 1 (use) or 0 (no use)')
-    parser.add_argument('--contrast_ratio', type=float, default=0.1, help='Contrastive loss control factor')
+    parser.add_argument('--contrast_ratio', type=float, default=0.4, help='Contrastive loss control factor')
 
     parser.add_argument("--learning_rate", type=float, default=5e-04, help="Learning rate.")
     parser.add_argument('--weight_decay', type=float, default=5e-04, help='Dropout probability.')
@@ -82,7 +82,6 @@ def gen_DGLGraph_with_droprate(ground, drop_rate, method='hyperedge'):
                 if np.random.binomial(1, (1.0 - drop_rate), 1) == 1:
                     he.append(i)
                     hv.append(v)
-
                 total_he.append(i)
                 total_hv.append(v)
 
