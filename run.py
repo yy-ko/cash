@@ -99,7 +99,11 @@ def train(args, data_info, node_aggr_info, device):
             total_loss = 0.0
             train_pred, train_label = [], []
 
-            for _ in range(train_iters):
+            epoch_time = 0.0
+            average_time = 0.0
+            epoch_start_time = time.time()
+
+            for _ in range(int(train_iters*args.train_ratio)):
                 # generating two augmented views for contrastive learning
                 g1 = utils.gen_DGLGraph_with_droprate(ground, args.drop_incidence_rate, method=args.augment_method).to(device)
                 g2 = utils.gen_DGLGraph_with_droprate(ground, args.drop_incidence_rate, method=args.augment_method).to(device)
@@ -145,8 +149,20 @@ def train(args, data_info, node_aggr_info, device):
                 optimizer.step()
 
                 total_loss += train_loss.item()
-            epoch_loss = total_loss / train_iters
+            epoch_loss = total_loss / (train_iters*args.train_ratio)
             scheduler.step(epoch_loss)
+
+
+            if args.train_only == 1: # for scalability evaluation
+                epoch_time = time.time() - epoch_start_time
+                print ('Training time per epoch: {:.4f}'.format(epoch_time))
+                average_time += epoch_time
+
+                if epoch == 4:
+                    print ('Average Training time per epoch: {:.4f}'.format(average_time))
+                    average_time = 0.0
+                    break
+                continue
 
             # Evaluation phase
             # 1. postiive dataset + four negative datasets (SNS, MNS, CNS, and Mixed)
@@ -333,7 +349,8 @@ if __name__ == '__main__':
     node_aggr_info = {'nhead': args.num_heads, 'nlayer': args.num_layers, 'h_dim': args.h_dim, 'dropout': args.dropout}
 
     train(args, data_info, node_aggr_info, device)
-    test(args, data_info, node_aggr_info, device)
+    if args.train_only == 0:
+        test(args, data_info, node_aggr_info, device)
 
 
 

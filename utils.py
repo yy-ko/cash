@@ -40,6 +40,8 @@ def parse_args():
     parser.add_argument('--seed', type=int, default=1, metavar='S', help='Random seed (default: 1)')
     parser.add_argument('--model_dir', type=str, default='./checkpoints', help='Path for saving the trained model')
 
+    parser.add_argument("--train_ratio", type=float, default=1.0, help="Proportion of training data.")
+    parser.add_argument("--train_only", type=int, default=0, help="Training only: 1")
     args = parser.parse_args()
 
     return args
