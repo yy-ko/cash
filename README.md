@@ -1,26 +1,31 @@
-# [SIGIR'23] DASH: Dual Self-Supervised Learning for Hyperedge Prediction
-This repository provides an implementation of *DASH* (submitted to SIGIR'23). 
+# [CIKM'23] CASH: Context-Aware Self-Supervised Learning for Accurate Hyperedge Prediction
+This repository provides an implementation of *CASH* (submitted to CIKM'23). 
 
-## The overview of DASH
-![The overview of DASH](./dash_overview.png)
+## The overview of CASH
+![The overview of CASH](./cash_overview.png)
 
-- **Datasets**
-    - We present two important research questions: (**Q1**) how to fully exploit group information for hyperedge prediction? and (**Q2**) how to aggregate the nodes of a hyperedge candidate?
-- **Method**
-    - We propose a novel approach to hyperedge prediction, DASH that employs (1) _dual_ contrastive learning equipped with a _hyperedge-aware_ augmentation method for Q1 and (2) a _context-aware_ node aggregation strategy for Q2.
-- Evaluation
-    - Via extensive experiments using 4 real hypergraphs, we demonstrate the superiority of DASH over existing methods.
+- **Intersting Challenges**
+    - We point out two important but under-explored challenges of hyperedge prediction: **(C1)** the node aggregation of a hyperedge candidate and **(C2)** the data sparsity.
+- **Effective Framework**
+    - We propose a novel hyperedge prediction framework, CASH that employs (1) a _context-aware node aggregation_ for C1 and (2) _self-supervised learning_ equipped with _hyperedge-aware augmentation_ and _dual contrastive loss_ for C2.
+- **Evaluation**
+    - We conduct extensive evaluation, which verifies the superiority of CASH in terms of (1) accuracy, (2) effectiveness, (3) insensitivity, and (4) scalability.
 
 
 ## Datasets
 All datasets used in the paper are available at [Link](https://drive.google.com/drive/folders/1w1zpGfQ1Sgl3A0fIlP4ekrDvSZ9Af1YT?usp=share_link).
 
-|Name|#Nodes|#Edges|Domain|
-|:---:|:---:|:---:|:---:|
-|Citeseer|1,457|1,078|Co-citation|
-|Cora|1,434|1,579|Co-citation|
-|Pubmed|3,840|7,962|Co-citation|
-|Cora-A|2,388|1,072|Authorship|
+|Name|#Nodes|#Edges|#Features|Domain|
+|:---:|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|:---:|:---:|
+|Citeseer|1,457|1,078|3703|Co-citation|
+|Cora|1,434|1,579|1433|Co-citation|
+|Pubmed|3,840|7,962|500|Co-citation|
+|:---:|:---:|:---:|:---:|:---:|
+|Cora-A|2,388|1,072|1433|Authorship|
+|DBLP-A|39,283|16,483|4543|Authorship|
+|:---:|:---:|:---:|:---:|:---:|
+|DBLP|2,388|22,964|4543|Collaboration|
 
 
 ### Dataset format
@@ -46,12 +51,11 @@ python3 -u run.py \
     --gpu_index=0 \
     --batch_size=32 \
     --ns_method=SNS \
-    --h_dim=256 \
-    --proj_dim=256 \
-    --drop_feature_rate=0.2 \
+    --h_dim=512 \
+    --proj_dim=512 \
+    --drop_feature_rate=0.24 \
     --drop_incidence_rate=0.4 \
     --num_epochs=200 \
     --dataset=citeseer \
     --learning_rate=0.005 \
-
 ```
