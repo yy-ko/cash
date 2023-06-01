@@ -2,7 +2,7 @@
 This repository provides an implementation of *CASH* (submitted to CIKM'23). 
 
 ## The overview of CASH
-![The overview of CASH](./cash_overview.pdf)
+![The overview of CASH](./cash_overview.png)
 
 - **Intersting Challenges**
     - We point out two important but under-explored challenges of hyperedge prediction: **(C1)** the node aggregation of a hyperedge candidate and **(C2)** the data sparsity.
