@@ -16,6 +16,7 @@ This repository provides an implementation of *CASH* (submitted to CIKM'23).
 All datasets used in the paper are available at [Link](https://drive.google.com/drive/folders/1w1zpGfQ1Sgl3A0fIlP4ekrDvSZ9Af1YT?usp=share_link).
 
 |Name|#Nodes|#Edges|#Features|Domain|
+|:---:|:---:|:---:|:---:|:---:|
 |Citeseer|1,457|1,078|3703|Co-citation|
 |Cora|1,434|1,579|1433|Co-citation|
 |Pubmed|3,840|7,962|500|Co-citation|
