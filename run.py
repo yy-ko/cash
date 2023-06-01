@@ -128,17 +128,15 @@ def train(args, data_info, node_aggr_info, device):
 
                 pos_preds = model.aggregate(n, pos_hedges, mode='Train', method=args.aggre_method)
                 neg_preds = model.aggregate(n, neg_hedges, mode='Train', method=args.aggre_method)
-                #  neg_preds1, neg_preds2 = model.aggregate(n1, neg_hedges, mode='Train', method=args.aggre_method), model.aggregate(n2, neg_hedges, mode='Train', method=args.aggre_method)
 
                 # 3. compute training loss and update parameters
                 d_real_loss = bce_loss(pos_preds, pos_labels) 
                 d_fake_loss = bce_loss(neg_preds, neg_labels) 
-                #  d_real_loss = (bce_loss(pos_preds1, pos_labels) + bce_loss(pos_preds2, pos_labels)) / 2
-                #  d_fake_loss = (bce_loss(neg_preds1, neg_labels) + bce_loss(neg_preds2, neg_labels)) / 2
-
                 pred_loss = d_real_loss + d_fake_loss
+
                 contrast_loss = -(torch.log(model.cosine_similarity(np1, np2)) + torch.log(model.cosine_similarity(hep1, hep2)))
 
+                # unified loss
                 if args.use_contrastive == 1:
                     train_loss = pred_loss + (contrast_loss*args.contrast_ratio)
                 else:
