@@ -4,7 +4,7 @@ This repository provides an implementation of *CASH* (submitted to CIKM'23).
 ## The overview of CASH
 ![The overview of CASH](./cash_overview.png)
 
-- **Intersting Challenges**
+- **Interesting Challenges**
     - We point out two important but under-explored challenges of hyperedge prediction: **(C1)** the node aggregation of a hyperedge candidate and **(C2)** the data sparsity.
 - **Effective Framework**
     - We propose a novel hyperedge prediction framework, CASH that employs (1) a _context-aware node aggregation_ for C1 and (2) _self-supervised learning_ equipped with _hyperedge-aware augmentation_ and _dual contrastive loss_ for C2.
