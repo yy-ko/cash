@@ -151,13 +151,14 @@ def train(args, data_info, node_aggr_info, device):
             scheduler.step(epoch_loss)
 
 
+
             if args.train_only == 1: # for scalability evaluation
                 epoch_time = time.time() - epoch_start_time
                 print ('Training time per epoch: {:.4f}'.format(epoch_time))
                 average_time += epoch_time
 
-                if epoch == 4:
-                    print ('Average Training time per epoch: {:.4f}'.format(average_time))
+                if epoch == 20: # run 20 epochs and 
+                    print ('Average Training time per epoch: {:.4f}'.format(average_time/20))
                     average_time = 0.0
                     break
                 continue
