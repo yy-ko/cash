@@ -28,7 +28,6 @@ All datasets used in the paper are available at [Link](https://drive.google.com/
 ### Dataset format
 Each dataset file contains following keys: 'N_edges', 'N_nodes', 'NodeEdgePair', 'EdgeNodePair', 'nodewt', 'edgewt', 'node_feat'.
 We also provide preprocessed splits, each of which contains train, validation, and test sets (both positive and negative).
-They can be found in ```split/``` in the provided link above.
 
 
 ## Dependencies
