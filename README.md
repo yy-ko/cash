@@ -1,5 +1,5 @@
-# [CIKM'23] CASH: Context-Aware Self-Supervised Learning for Accurate Hyperedge Prediction
-This repository provides an implementation of *CASH* (submitted to CIKM'23). 
+CASH: Context-Aware Self-Supervised Learning for Accurate Hyperedge Prediction
+This repository provides an implementation of *CASH*. 
 
 ## The overview of CASH
 ![The overview of CASH](./cash_overview.png)
