@@ -1,5 +1,5 @@
-## Enhancing Hyperedge Prediction with Context-Aware Self-Supervised Learning 
-### Under review at IEEE TKDE.
+# Enhancing Hyperedge Prediction with Context-Aware Self-Supervised Learning (Under review at IEEE TKDE)
+Yunyong Ko, Hanghang Tong, and Sang-Wook Kim
 This repository provides an implementation of *CASH*. 
 
 ## The overview of CASH
