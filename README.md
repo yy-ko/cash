@@ -56,3 +56,16 @@ python3 -u run.py \
     --dataset=citeseer \
     --learning_rate=0.005 \
 ```
+
+
+
+## Citation
+Please cite our paper if you have used the code in your work. You can use the following BibTex citation:
+```
+@article{ko2025enhancing,
+  title={Enhancing hyperedge prediction with context-aware self-supervised learning},
+  author={Ko, Yunyong and Tong, Hanghang and Kim, Sang-Wook},
+  journal={IEEE Transactions on Knowledge and Data Engineering},
+  year={2025},
+  publisher={IEEE}
+}
