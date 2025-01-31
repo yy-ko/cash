@@ -63,9 +63,9 @@ python3 -u run.py \
 Please cite our paper if you have used the code in your work. You can use the following BibTex citation:
 ```
 @article{ko2025enhancing,
-  title={Enhancing hyperedge prediction with context-aware self-supervised learning},
+  title={Enhancing Hyperedge Prediction with Context-Aware Self-Supervised Learning},
   author={Ko, Yunyong and Tong, Hanghang and Kim, Sang-Wook},
-  journal={IEEE Transactions on Knowledge and Data Engineering},
+  journal={IEEE Transactions on Knowledge and Data Engineering (TKDE)},
   year={2025},
   publisher={IEEE}
 }
